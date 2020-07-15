@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e030247e3a99e44a950edca6224e0e6, type: 3}
   m_Name: WatsonSettings
   m_EditorClassIdentifier: 
-  Assistant_apikey: WAXRDrDH-6mmsz_R_HqoIcCgUYYPVOeq_M6tLSX9egYi
-  serviceUrl: https://api.us-south.assistant.watson.cloud.ibm.com/instances/bf810f30-0a52-4146-93ed-0d9b7cc8c648/v2/assistants/cf6ff66e-f09f-4e49-a755-3787c790d278/sessions
+  Assistant_apikey: k6pF_0VfeVOmh3HregEwbYv2TFlIriWi9AJ-UXzEuo_-
+  serviceUrl: https://api.us-south.assistant.watson.cloud.ibm.com/instances/eca52826-74f0-4b64-9e69-ee7a3ad4bb97/v2/assistants/0a5a6d1e-c788-4355-873b-c9afb503d2d7/sessions
   versionDate: 2019-05-28
-  assistantId: cf6ff66e-f09f-4e49-a755-3787c790d278
-  tts_apikey: kG-dHZejh6lI6YrMLIZhsQU96O8CvecUmG46BqlfeXZ9
-  tts_serviceUrl: https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/717d8602-a4e1-484f-9c9d-445546bbe2f5
-  stt_apikey: tWUGvOU56ZsdHKOwdIOkpvxfnZcrfKqRZ-oH6Hg0Naw0
-  stt_serviceUrl: https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/ddbd3b3d-1fee-49a4-87e2-d5a65fa48d90
+  assistantId: 0a5a6d1e-c788-4355-873b-c9afb503d2d7
+  tts_apikey: DyjCbEytcagDyDNMjkPfzhsZCdBbqefaqjbyy0F5JlYe
+  tts_serviceUrl: https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/60b9b35e-02f9-4899-8aea-9560739e09c9
+  stt_apikey: C3pa8vnfvOEk67uUbwxYYHOx1gtELtQSV8fBrVtjWa2x
+  stt_serviceUrl: https://api.us-south.speech-to-text.watson.cloud.ibm.com/instances/ed66c613-9baf-4aaf-8422-e1b0e4942a5c
