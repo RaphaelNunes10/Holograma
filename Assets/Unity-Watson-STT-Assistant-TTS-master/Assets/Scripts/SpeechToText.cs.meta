@@ -3,12 +3,7 @@ guid: 5ef0d17b7b4bd4c478ab7a86d6fd0ef6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - settings: {fileID: 11400000, guid: 3f813d8bd389cab4db095af6fb7b02b5, type: 2}
-  - spokenText: {instanceID: 0}
-  - targetInputField: {instanceID: 0}
-  - targetGameObject: {instanceID: 0}
-  - outputInputField: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -39,6 +39,7 @@ using UnityEngine.UI;
 //celso abaixo
 using UnityEngine.Windows.Speech;
 using System.Linq;
+using UnityEngine.Audio;
 
 public class TextToSpeech : MonoBehaviour
 {
@@ -81,7 +82,7 @@ public class TextToSpeech : MonoBehaviour
     private ProcessingStatus audioStatus;
 
     [SerializeField]
-    private AudioSource outputAudioSource; // The AudioSource for speaking
+    private AudioSource outputAudioSource, musica; // The AudioSource for speaking
 
     // A queue for storing the entered texts for conversion to speech audio files
     private Queue<string> textQueue = new Queue<string>();
@@ -100,12 +101,15 @@ public class TextToSpeech : MonoBehaviour
     //[SerializeField]
     private InputField inputField;
 
-    public string vozminha ="";
 
 
 
+    //
+    private Animator ControlaDanca;
 
-     //
+    
+
+
     private KeywordRecognizer KeywordRecognizer;
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
     float speed = 50.0f;
@@ -113,14 +117,14 @@ public class TextToSpeech : MonoBehaviour
     //celso acima
 
     private void Start()
-    {   
+    {
         //
-       
+    ControlaDanca = GetComponent<Animator>();
         // celso acima
 
-
-
-         Debug.Log("AddTextToQueue:asd" );
+        musica = GetComponent<AudioSource>();
+        
+        Debug.Log("AddTextToQueue:asd" );
         audioStatus = ProcessingStatus.Idle;
         LogSystem.InstallDefaultReactors();
         Runnable.Run(CreateService());
@@ -149,14 +153,17 @@ public class TextToSpeech : MonoBehaviour
                 externalInputField.onValueChanged.AddListener(delegate { AddTextToQueue(externalInputField.text); });
             }
         }
-
+            
         inputField = gameObject.AddComponent<InputField>();
         inputField.textComponent = gameObject.AddComponent<Text>();
         inputField.onValueChanged.AddListener(delegate { AddTextToQueue(inputField.text); });
 
-        actions.Add("esquerda", esquerda);
-        actions.Add("baixo", baixo);
-        actions.Add("cima", cima);
+        actions.Add("Valor da bolacha negresco", esquerda);
+        actions.Add("Dançar break", baixo);
+        actions.Add("Chutou o balde", baixo);
+        
+
+        actions.Add("Onde fica a maionese", sobe);
         actions.Add("direita", direita);
         KeywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
         KeywordRecognizer.OnPhraseRecognized += RecognizedSpeech;
@@ -169,29 +176,25 @@ public class TextToSpeech : MonoBehaviour
 ////celso acima
     private void Update()
     {
-        Debug.Log("asdasdas" + vozminha);
-
         // If no AudioClip is playing, convert the next text phrase to
         // audio audio if there is any left in the text queue.
         // The new audio clip is placed into the audio queue.
         if (textQueue.Count > 0 && audioStatus == ProcessingStatus.Idle)
         {
-        Debug.Log("asdasdas" + vozminha);
-
             Debug.Log("Run ProcessText");                
             Runnable.Run(ProcessText());
         }
-        
+
+       
+
 
         // If no AudioClip is playing, remove the next clip from the
         // queue and play it.
         if (audioQueue.Count > 0 && !outputAudioSource.isPlaying)
         {
-        Debug.Log("asdasdas" + vozminha);
-
+            
             PlayClip(audioQueue.Dequeue());
         }
-        Debug.Log("asdasdas" + vozminha);
 
     }
 
@@ -204,32 +207,37 @@ public class TextToSpeech : MonoBehaviour
             
         }
 */
-          
         actions[speech.text].Invoke();
 
     }
 
-    private void cima(){
+    private void sobe(){
         transform.Rotate(0, 10 , 0);
-
-       
     }
     private void baixo(){
-        
-        transform.Translate(0, -1, 0);
+       
+
+       
+        //PlayMusic("");
+        ControlaDanca.Play("AnimacaoDanca.DancaBreak", -1, 0f);
+        musica.clip = Resources.Load<AudioClip>("musiccorte");
+        musica.Play();
+
     }
 
-private void esquerda(){
+
+    private void esquerda(){
         transform.Translate(-1,0,0);
         textQueue.Enqueue("O valor da bolacha é R$2");
         inputField.text = string.Empty;
     }
 
-        private void direita(){
-                transform.Translate(1,0,0);
-                textQueue.Enqueue("To de saco cheio desse projeto risos");
-                inputField.text = string.Empty;
-            }
+   
+private void direita(){
+        transform.Translate(1,0,0);
+        textQueue.Enqueue("To de saco cheio desse projeto risos");
+        inputField.text = string.Empty;
+    }
 
 
 
@@ -316,7 +324,7 @@ private void esquerda(){
         }
     }
 
-
+  
 
 
 
