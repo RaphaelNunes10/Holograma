@@ -9,7 +9,7 @@ Basta adcionar um novo projeto e usar a pasta "Holograma - Unity" como template.
 
 Modelo 3D:
 
-Os arquivos da mascote incluem vers√µes de teste bem como os projetos .blend inclusos na pasta "src".
+Os arquivos da mascote incluem versıes de teste bem como os projetos .blend inclusos na pasta "src".
 
 O modelo completo encontra-se no arquivo "Mascote_Final.fbx".
 
